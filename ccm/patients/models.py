@@ -17,8 +17,9 @@ class Patient(Base):
     last_name = Column(String, nullable=True)
     birth_date = Column(Date, nullable=False)
 
+    @property
     def fullname(self):
-        return u'{first_name} {last_name}}'.format(
+        return u'{first_name} {last_name}'.format(
             first_name=self.first_name,
             last_name=self.last_name
         )

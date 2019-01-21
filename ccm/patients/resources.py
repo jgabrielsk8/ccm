@@ -17,4 +17,3 @@ class PatientsCreateListResource(CollectionResource):
 class PatientsDetailResource(SingleResource):
     model = Patient
     methods = ['GET']
-

@@ -1,9 +1,15 @@
 import jwt
 import falcon
+import os
+
+SECRET = os.environ.get('JWT_SECRET', 'secret')
 
 
 class AuthMiddleware(object):
     def process_request(self, req, resp):
+        if req.path == '/auth':
+            return
+
         token = req.get_header('Authorization')
 
         if not token:
@@ -14,7 +20,7 @@ class AuthMiddleware(object):
 
         jwt_token = token.split(' ')[1]
         try:
-            jwt_decoded = jwt.decode(jwt_token, 'secret', algorithms=['HS256'])
+            jwt_decoded = jwt.decode(jwt_token, SECRET, algorithms=['HS256'])
         except jwt.exceptions.InvalidTokenError:
             raise falcon.HTTPUnauthorized(
                 'Authentication Failed',
