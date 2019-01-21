@@ -6,9 +6,9 @@ Small project to test the Falcon library.
 
 ## Technology used
 
-Falcon
-SQLAlchemy
-Docker
+* [Falcon](https://falcon.readthedocs.io/en/stable/) - Python Library to create API's
+* [SQLAlchemy](https://www.sqlalchemy.org/) - Python SQL toolkit and Object Relational Mapper
+* [Docker](https://www.docker.com/) - Tool designed to make it easier to create, deploy, and run applications by using containers
 
 ## How to run this app (Docker)
 
