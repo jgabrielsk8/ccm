@@ -36,6 +36,23 @@ services:
        update_config:
          parallelism: 1
          delay: 10s
+   db_test:
+     image: postgres:11.1
+     volumes:
+       - db_test:/var/lib/postgresql/data
+     environment:
+       - POSTGRES_DB=ccm_db_test
+       - POSTGRES_USER=ccm_user_test
+       - POSTGRES_PASSWORD=ccm_pwd_test
+     deploy:
+       placement:
+         constraints:
+           - node.labels.type==database
+       replicas: 1
+       update_config:
+         parallelism: 1
+         delay: 10s
 
 volumes:
   db:
+  db_test:

@@ -29,7 +29,16 @@ class TestClass(object):
     def test_no_patients(self, client):
         expected_json = {'data': []}
 
-        result = client.simulate_get('/patients')
+        result = client.simulate_get(
+            '/patients',
+            headers={
+                'Authorization': (
+                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
+                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
+                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
+                )
+            }
+        )
 
         assert result.json == expected_json
 
@@ -55,7 +64,16 @@ class TestClass(object):
         self.session.commit()
         self.session.close()
 
-        result = client.simulate_get('/patients')
+        result = client.simulate_get(
+            '/patients',
+            headers={
+                'Authorization': (
+                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
+                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
+                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
+                )
+            }
+        )
 
         assert result.json == expected_json
 
@@ -69,10 +87,20 @@ class TestClass(object):
             }
         }
 
-        result = client.simulate_post('/patients', json={
-            "first_name": "",
-            "last_name": "Giron",
-            "birth_date": "1989-08-04"
-        })
+        result = client.simulate_post(
+            '/patients',
+            json={
+                "first_name": "",
+                "last_name": "Giron",
+                "birth_date": "1989-08-04"
+            },
+            headers={
+                'Authorization': (
+                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
+                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
+                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
+                )
+            }
+        )
 
         assert result.json == expected_json
