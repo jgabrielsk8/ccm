@@ -86,7 +86,7 @@ curl --request GET \
   --header 'authorization: Bearer token'
 `
 
-## Runnning tests
+## Running tests
 
 `docker-compose -f docker-compose-dev.yml exec ccm pytest --disable-warnings`
 
