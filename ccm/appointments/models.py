@@ -9,6 +9,7 @@ class Appointment(Base):
 
     id = Column(Integer, primary_key=True)
     patient_id = Column(Integer, ForeignKey('patients.id'))
+    patient = relationship('Patient')
     date = Column(Date, nullable=False)
 
     def __repr__(self):

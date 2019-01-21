@@ -18,8 +18,7 @@ PatientForm = model_form(
                 validators.DataRequired()
             ]
         }
-    },
-    exclude=['gender']
+    }
 )
 
 

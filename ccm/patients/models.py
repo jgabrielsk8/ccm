@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String, Date
-from sqlalchemy_utils import ChoiceType
 
 from ccm.settings import Base
 
@@ -17,7 +16,6 @@ class Patient(Base):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=True)
     birth_date = Column(Date, nullable=False)
-    # gender = Column(ChoiceType(GENDER))
 
     def fullname(self):
         return u'{first_name} {last_name}}'.format(
