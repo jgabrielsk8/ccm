@@ -1,0 +1,12 @@
+FROM python:3.6.5-slim
+
+MAINTAINER Jose Gabriel Giron <jgabrielsk8@gmail.com>
+ENV PYTHONUNBUFFERED 1
+
+# setup project code
+ENV INSTALL_PATH /usr/src
+WORKDIR $INSTALL_PATH
+COPY . .
+RUN pip install -r requirements/dev.txt
+
+ENTRYPOINT $INSTALL_PATH'/entrypoint-dev.sh'

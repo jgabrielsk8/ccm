@@ -1,6 +1,8 @@
 falcon==1.4.1
-msgpack-python==0.5.6
 SQLAlchemy==1.2.16
 psycopg2-binary==2.7.6.1
 falcon-autocrud==1.0.36
+WTForms==2.2.1
+PyJWT==1.7.1
 alembic==1.0.6
+gunicorn==19.9.0

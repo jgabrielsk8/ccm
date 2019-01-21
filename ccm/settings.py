@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_URL = os.environ.get('DB_URL')
+DB_URL = os.environ.get('CCM_DB_URI')
 TEST_DB_URL = os.environ.get('TEST_DB_URL')
 
 db_engine = create_engine(DB_URL)
