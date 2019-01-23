@@ -11,6 +11,9 @@ from ccm.settings import TEST_DB_URL, Base
 
 class TestClass(object):
     session = None
+    auth_token = ('Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
+                  'eyJ1c2VyIjoidXNlciIsInBhc3N3b3JkIjoicHdkIn0.'
+                  '0KpExcKRl1O2U3i2Tiw7sCavjL5vtZ2GVDWCVj7_Q3U')
 
     @pytest.fixture(autouse=True)
     def client(self, request):
@@ -32,11 +35,7 @@ class TestClass(object):
         result = client.simulate_get(
             '/patients',
             headers={
-                'Authorization': (
-                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
-                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
-                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
-                )
+                'Authorization': self.auth_token
             }
         )
 
@@ -67,11 +66,7 @@ class TestClass(object):
         result = client.simulate_get(
             '/patients',
             headers={
-                'Authorization': (
-                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
-                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
-                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
-                )
+                'Authorization': self.auth_token
             }
         )
 
@@ -95,11 +90,7 @@ class TestClass(object):
                 "birth_date": "1989-08-04"
             },
             headers={
-                'Authorization': (
-                    'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
-                    'eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.'
-                    '9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
-                )
+                'Authorization': self.auth_token
             }
         )
 
