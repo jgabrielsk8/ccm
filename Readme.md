@@ -32,12 +32,20 @@ The first time will take a while, docker is downloading everything he needs to r
 
 ***Note replace data with the values you want.
 
+**Get a token**
+
+`
+curl --request POST \
+     -H "Authorization: Basic $(echo -n admin:123456 | base64)" \
+     --url 127.0.0.1:8000/auth
+`
+
 **Create a patient**
 
 `
 curl --request POST \
   --url http://127.0.0.1:8000/patients \
-  --header 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk' \
+  --header 'authorization: Bearer token' \
   --header 'content-type: application/json' \
   --data '{
 	"first_name": "FirstName",
@@ -52,7 +60,7 @@ curl --request POST \
 `
 curl --request GET \
   --url 'http://127.0.0.1:8000/patients?__offset=0&__limit=10' \
-  --header 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
+  --header 'authorization: Bearer token'
 `
 
 
@@ -61,7 +69,7 @@ curl --request GET \
 `
 curl --request POST \
   --url http://127.0.0.1:8000/appointments \
-  --header 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk' \
+  --header 'authorization: Bearer token' \
   --header 'content-type: application/json' \
   --data '{
 	"patient_id": 1,
@@ -75,10 +83,10 @@ curl --request POST \
 `
 curl --request GET \
   --url http://127.0.0.1:8000/appointments \
-  --header 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiam9zZWciLCJwd2QiOiJwYXNzd29yZCJ9.9pkUP_tW9Ct27w0VNit6Oo62FKhsCksNNoHFmj2KQBk'
+  --header 'authorization: Bearer token'
 `
 
-## Runnning tests
+## Running tests
 
 `docker-compose -f docker-compose-dev.yml exec ccm pytest --cov=ccm tests --disable-warnings`
 
