@@ -80,6 +80,6 @@ curl --request GET \
 
 ## Runnning tests
 
-`docker-compose -f docker-compose-dev.yml exec ccm pytest --disable-warnings`
+`docker-compose -f docker-compose-dev.yml exec ccm pytest --cov=ccm tests --disable-warnings`
 
 
